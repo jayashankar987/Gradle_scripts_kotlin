@@ -31,7 +31,14 @@ android {
 
         create("MyBuild") {
             applicationId = "com.jay.sample.demo"
-            manifestPlaceholders = mapOf("appIcon" to "@mipmap/ic_launcher_round")
+            manifestPlaceholders = mapOf("appIcon" to "@mipmap/ic_kotlin")
+        }
+
+
+
+        create("BlrKotlin") {
+            applicationId = "com.community.blr.kotlin"
+            manifestPlaceholders = mapOf("appIcon" to "@mipmap/blr_kotlin")
         }
 
         create("minApi26") {
@@ -44,7 +51,7 @@ android {
 
 
     buildTypes {
-        named("release") {
+        getByName("release") {
             isMinifyEnabled = true
             isShrinkResources = true
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
@@ -58,7 +65,8 @@ android {
     }
 
     sourceSets {
-        //getByName("Meetup").res.srcDirs("src/Meetup/res")
+        getByName("BlrKotlin").res.srcDirs("src/BlrKotlin/res")
+
     }
 
     compileOptions {
@@ -110,5 +118,6 @@ tasks.register("generateApk") {
 
 kapt {
     useBuildCache = true
+
 }
 
